@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Header/>
-    <Footer/>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <Footer v-show="$route.meta.show"/>
   </div>
 </template>
 

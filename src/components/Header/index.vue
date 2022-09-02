@@ -7,7 +7,7 @@
                         <p>尚品汇欢迎您！</p>
                         <p>
                             <span>请</span>
-                            <a href="###">登录</a>
+                            <a href="javascript:;" @click="toLogin">登录</a>
                             <a href="###" class="register">免费注册</a>
                         </p>
                     </div>
@@ -27,7 +27,10 @@
             <div class="bottom">
                 <h1 class="logoArea">
                     <a class="logo" title="尚品汇" href="###" target="_blank">
-                        <img src="../Header/images/logo.png" alt="">
+                        
+                        <router-link to="home">
+                            <img src="../Header/images/logo.png" alt="">
+                        </router-link>
                     </a>
                 </h1>
                 <div class="searchArea">
@@ -39,6 +42,21 @@
             </div>
         </header>
 </template>
+<script>
+    export default{
+        name:"login",
+        data(){
+            return{
+
+            }
+        },
+        methods:{
+            toLogin(){
+                this.$router.push('/login')
+            }
+        }
+    }
+</script>
 <style lang="less" scoped>
 
 

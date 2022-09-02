@@ -4,6 +4,10 @@ import VueRouter from 'vue-router'
 //使用插件
 Vue.use(VueRouter);
 //配置路由
+let originPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+    return originPush.call(this, location).catch(err => err)
+}  
 import Home from '@/pages/Home'
 import Search from '@/pages/Search'
 import Login from '@/pages/Login'
@@ -14,19 +18,23 @@ export default new VueRouter({
     routes:[
         {
             path:"/home",
-            component:Home
+            component:Home,
+            meta:{show:true}
         },
         {
             path:"/search",
-            component:Search
+            component:Search,
+            meta:{show:true}
         },
         {
             path:"/login",
-            component:Login
+            component:Login,
+            meta:{show:false}
         },
         {
             path:"/register",
-            component:Register
+            component:Register,
+            meta:{show:true}
         }
     ]
 })
