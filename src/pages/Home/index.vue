@@ -9,12 +9,21 @@
     <a-button type="primary" @click="testVueDebounce">
         Primary
       </a-button>
+      <a-button type="primary" @click="changeMsg">
+        改变名字
+      </a-button>
+      <a-button type="primary" @click="changeCounter">
+        加
+      </a-button>
+      {{msg}}
+      {{counter}}
     </div>
 </template>
 <script>
 // import { onDeactivated } from 'vue';
 import Recursion from "./test/recursion.vue"
 import VueDebounce from "@/utils/debounce.js"
+import {ref} from 'vue'
 export default{
     name: "",
     
@@ -29,8 +38,24 @@ export default{
                 {"name":"w","id":2,"chidren":[
                     {"name":"e","id":1}
                 ]},
-            ]
+            ],
+            message:"HelloWorld"
         }
+    },
+    setup(){
+        console.log("setup");
+        let msg = ref('hello');
+        console.log(msg);
+        function changeMsg(){
+            msg.value='nihao'
+            console.log(msg)
+        }
+
+        const counter = ref(0)
+        function changeCounter(){
+            counter.value++
+        }
+        return {msg,changeMsg,counter,changeCounter}
     },
     created() {
         // console.log(this)
